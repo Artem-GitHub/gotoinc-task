@@ -14,6 +14,10 @@ export default defineNuxtConfig({
   css: [
     '@/assets/styles/index.sass',
   ],
+  modules: [
+    '@pinia/nuxt',
+    'nuxt-icons',
+  ],
   app: {
     head: {
       link: [
