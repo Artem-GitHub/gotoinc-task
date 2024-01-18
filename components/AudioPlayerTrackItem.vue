@@ -101,7 +101,6 @@ function drawAudioBaseFrequency () {
 function drawAudioProgressFrequency (time) {
   const result = canvasWidth / audioTimeDuration.value;
   const widthUnit = Math.floor(time * result);
-  // console.log(canvasWidth, audioTimeDuration.value, canvasWidth / audioTimeDuration.value);
 
   for (tempTimeCount; tempTimeCount < widthUnit; tempTimeCount++) {
     const { fromY, toY } = frequencyArrayData[tempTimeCount];
