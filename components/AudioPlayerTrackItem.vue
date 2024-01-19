@@ -79,10 +79,7 @@ function getAverageOfChannels (widthUnit) {
 };
 
 function convertToPrimeNumber (number) {
-  if (number < 2) return 1;
-  else if (number === 2) return 3;
-  else if (number > 2 && !Boolean(number % 2)) return number + 1;
-  else return number;
+  return !Boolean(number % 2) ? number + 1 : number;
 };
 
 function drawAudioBaseFrequency () {
