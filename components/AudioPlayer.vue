@@ -3,7 +3,7 @@ const controlsPanel = ref(null);
 const store = usePlayerStore();
 
 function audioEnded () {
-  controlsPanel?.value.nextAudio();
+  controlsPanel.value?.nextAudio();
 };
 </script>
 

@@ -26,11 +26,8 @@ function setNewActiveAudioElement (id) {
 };
 
 function toggleAudioPlayback () {
-  if (store.activeAudioElement.audio.paused) {
-    audioPlay();
-  } else {
-    audioPause();
-  }
+  if (store.activeAudioElement.audio.paused) audioPlay();
+  else audioPause();
 };
 
 function prevAudio () {

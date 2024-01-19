@@ -20,6 +20,7 @@ let audioContext = null;
 let decodedAudioData = null;
 let audioElement = null;
 let tempTimeCount = 0;
+let audioDurationRatioToCanvasWidth = 0;
 const frequencyArrayData = [];
 
 const store = usePlayerStore();
@@ -34,9 +35,11 @@ const audioTime = computed(() => {
   else return audioTimeDuration.value || 0;
 });
 
-watch(() => store.activeAudioElement.id, newValue => {
-  clearProgressFrequency();
-  tempTimeCount = 0;
+watch(() => store.activeAudioElement.id, () => {
+  if (!currentAudioElement.value) {
+    clearProgressFrequency();
+    tempTimeCount = 0;
+  }
 });
 
 onMounted(() => {
@@ -96,8 +99,8 @@ function drawAudioBaseFrequency () {
 };
 
 function drawAudioProgressFrequency (time) {
-  const result = canvasWidth / audioTimeDuration.value;
-  const widthUnit = Math.floor(time * result);
+  canvasContext.fillStyle = '#399AFB';
+  const widthUnit = Math.floor(time * audioDurationRatioToCanvasWidth);
 
   for (tempTimeCount; tempTimeCount < widthUnit; tempTimeCount++) {
     const { fromY, toY } = frequencyArrayData[tempTimeCount];
@@ -112,7 +115,7 @@ function clearProgressFrequency () {
   for (let widthUnit in frequencyArrayData) {
     const fromX = widthUnit;
     const { fromY, toY } = frequencyArrayData[widthUnit];
-    canvasContext.clearRect(fromX, fromY, 1, canvasHeight);
+    canvasContext.clearRect(fromX, fromY, 1, toY);
     canvasContext.fillRect(fromX, fromY, 1, toY);
   }
 };
@@ -132,7 +135,6 @@ function audioTimeUpdateEvent () {
   store.activeAudioCurrentTimeInSeconds = currentTime;
   audioCurrentTimeInSeconds.value = currentTime;
   calculateAudioPlayProgress(currentTime);
-  canvasContext.fillStyle = '#399AFB';
   drawAudioProgressFrequency(currentTime);
 };
 
@@ -157,8 +159,9 @@ function addAudioElementToList () {
   });
 };
 
-function setAudioTimeDuration () {
+function setAudioTimeOptions () {
   audioTimeDuration.value = decodedAudioData.duration;
+  audioDurationRatioToCanvasWidth = canvasWidth / audioTimeDuration.value;
 };
 
 async function getAudioFile () {
@@ -170,7 +173,7 @@ async function getAudioFile () {
     createAudioElement();
     addEvents();
     addAudioElementToList();
-    setAudioTimeDuration();
+    setAudioTimeOptions();
   } catch(error) {
     console.error(error);
   }
