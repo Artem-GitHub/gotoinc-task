@@ -149,9 +149,6 @@ defineExpose({ nextAudio });
   width: 100%
   max-width: 600px
   row-gap: 8px
-  padding: 24px 8px
-  position: fixed
-  bottom: 0
 
 .actions
   display: flex
