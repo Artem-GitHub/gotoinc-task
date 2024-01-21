@@ -16,7 +16,9 @@ definePageMeta({
       To play music, click on one of the tracks in the list
     </p>
 
-    <AudioPlayer />
+    <client-only>
+      <AudioPlayer />
+    </client-only>
   </div>
 </template>
 

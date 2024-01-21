@@ -36,10 +36,12 @@ onMounted(async () => {
       </p>
     </div>
 
-    <div
-      id="checkout"
-      class="payment__form"
-    />
+    <client-only>
+      <div
+        id="checkout"
+        class="payment__form"
+      />
+    </client-only>
   </section>
 </template>
 
