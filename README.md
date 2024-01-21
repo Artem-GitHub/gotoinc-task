@@ -1,6 +1,6 @@
-## View application
+# View application
 
-https://guarded-reaches-19663-36aa544a4c40.herokuapp.com/player
+https://guarded-reaches-19663-36aa544a4c40.herokuapp.com
 
 # Nuxt 3 Minimal Starter
 
