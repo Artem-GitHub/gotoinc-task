@@ -215,12 +215,12 @@ function toggleAudioPlayback () {
       >
 
       <nuxt-icon
-        v-show="!store.activeAudioElement.audio?.paused && currentAudioElement"
+        v-show="store.activeAudioElement.audio?.paused && currentAudioElement"
         name="play-fill"
       />
 
       <nuxt-icon
-        v-show="store.activeAudioElement.audio?.paused && currentAudioElement"
+        v-show="!store.activeAudioElement.audio?.paused && currentAudioElement"
         name="pause-fill"
       />
     </div>
