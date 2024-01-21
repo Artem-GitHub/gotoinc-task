@@ -1,3 +1,7 @@
+## View application
+
+https://guarded-reaches-19663-36aa544a4c40.herokuapp.com/player
+
 # Nuxt 3 Minimal Starter
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
